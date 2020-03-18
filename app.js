@@ -32,10 +32,10 @@ rl.on('close', () => {
     value.change = value.popu15 / value.popu10;
   }
   const rankingArray = Array.from(prefectureDateMap).sort((pair1,pair2) => {
-    return pair2[1].change - pair1[1].change;//降順か昇順か戻り値で判断する
+    return pair1[1].change-pair2[1].change;//降順か昇順か戻り値で判断する
   });
-  const rankingStrings = rankingArray.map(([key, value])=>{
-    return key + ': ' + value.popu10 + '=>' + value.popu15 + '変化量' + value.change;//Map の キーと値が要素になった配列を要素 [key, value] として受け取り、それを文字列に変換する
+  const rankingStrings = rankingArray.map(([key, value],i)=>{
+    return key + ': ' + value.popu10 + '=>' + value.popu15 + '変化量' + value.change+'順位'+i;//Map の キーと値が要素になった配列を要素 [key, value] として受け取り、それを文字列に変換する
   })
   console.log(rankingStrings);
 });
